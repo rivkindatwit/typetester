@@ -40,7 +40,7 @@ int compareStrings(int len, char* testArr, char* userArr)
 int main(void)
 {
 
-    char text[100]; // not currently needed.
+    char text[100] = {0}; // not currently needed.
     char testExpression[] = {"here is the where this one is the one"};
     printf("please type the expression below to your best accuracy\n");
     printf("%s\n",testExpression);
@@ -58,11 +58,15 @@ int main(void)
     int count = 0;
     while((currChar =getchar()) != '\n')
     {
-        text[count] = currChar;
-        count++;
-        printf("[%d]", count);
+
+           // red base  printf("\033[1;32m%c\033[0m", currChar);
+
+           // green base printf("\033[1;31m%c\033[0m", currChar);
+
+
         fflush(stdout);
     }
+    printf("\n");
     // reset terminal to canonical mode.
     tcsetattr(STDIN_FILENO, TCSANOW, &tty);
 
