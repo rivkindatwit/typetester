@@ -47,7 +47,7 @@ int main(void)
 
     tcgetattr(STDIN_FILENO, &tty);
     tty2 = tty;
-    tty2.c_lflag &= ~(ICANON| ECHO);
+    tty2.c_lflag &= ~(ICANON | ECHO);
     tcsetattr(STDIN_FILENO, TCSANOW, &tty2);
 
     // get clock
@@ -58,7 +58,16 @@ int main(void)
     int count = 0;
     while((currChar =getchar()) != '\n')
     {
-
+            text[count] = currChar;
+            if(currChar == testExpression[count])
+            {
+                printf("\033[1;32m%c\033[0m", currChar);
+            }
+            else
+            {
+                printf("\033[1;31m%c\033[0m", currChar);
+            }
+            count++;
            // red base  printf("\033[1;32m%c\033[0m", currChar);
 
            // green base printf("\033[1;31m%c\033[0m", currChar);
@@ -77,15 +86,15 @@ int main(void)
     int difference = compareStrings(numChars(testExpression),testExpression,text);
     switch(difference){
         case 0:
-            printf("perfect score.\n");
+            printf("Perfect Accuracy\n");
             break;
         case 1:
-            printf("you made 1 mistake.\n");
+            printf("You made 1 mistake\n");
             break;
         default:
-            printf("you made %d mistakes\n",difference);
+            printf("You made: %d mistakes\n",difference);
     }
     double wpm = (numChars(testExpression) / elapsed) * 60 / 5;
-    printf("you typed %d characters in %.2f seconds, which equates to %.2f WPM.",numChars(testExpression),elapsed,wpm);
+    printf("Speed: %.2f\n", wpm);
 
 }
