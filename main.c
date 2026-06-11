@@ -3,6 +3,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 struct timespec start,end;
 struct termios tty;
@@ -39,6 +40,13 @@ int compareStrings(int len, char* testArr, char* userArr)
 
 int main(void)
 {
+    FILE *file = fopen("words.txt","r");
+    if(file == NULL)
+    {
+        perror("failed to open file");
+        return 1;
+    }
+    char buf[200];
 
     char text[100] = {0}; // not currently needed.
     char testExpression[] = {"here is the where this one is the one"};
