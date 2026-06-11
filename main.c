@@ -1,9 +1,12 @@
-#include <bits/time.h>
 #include <stdio.h>
 #include <time.h>
-
+#include <termios.h>
+#include <unistd.h>
 
 struct timespec start,end;
+struct termios tty;
+struct termios tty2;
+
 
 int numChars(char* here)
 {
@@ -33,12 +36,23 @@ int compareStrings(int len, char* testArr, char* userArr)
 
 int main(void)
 {
-    char text[30];
-    char testExpression[] = {"67 is the best"};
+    char text[100];
+    char testExpression[] = {"here is the where this one is the one"};
     printf("please type the expression below to your best accuracy\n");
     printf("%s\n",testExpression);
+
+    tcgetattr(STDIN_FILENO, &tty);
+    tty2 = tty;
+    tty2.c_lflag &= ~(ICANON);
+    tcsetattr(STDIN_FILENO, TCSANOW, &tty2);
+
+    // get clock
     clock_gettime(CLOCK_MONOTONIC, &start);
-    scanf("%29[^\n]", text);
+    // input from user
+    scanf("%99[^\n]", text);
+    // reset terminal to canonical mode.
+    tcsetattr(STDIN_FILENO, TCSANOW, &tty);
+
     clock_gettime(CLOCK_MONOTONIC, &end);
     double elapsed = (end.tv_sec - start.tv_sec)
                    + (end.tv_nsec - start.tv_nsec) / 1e9;
