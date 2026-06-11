@@ -15,6 +15,8 @@ int numChars(char* here)
     return counter;
 }
 
+
+
 int compareStrings(int len, char* testArr, char* userArr)
 {
     int ret = 0;
