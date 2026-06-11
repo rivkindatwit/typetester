@@ -47,7 +47,7 @@ int main(void)
 
     tcgetattr(STDIN_FILENO, &tty);
     tty2 = tty;
-    tty2.c_lflag &= ~(ICANON);
+    tty2.c_lflag &= ~(ICANON| ECHO);
     tcsetattr(STDIN_FILENO, TCSANOW, &tty2);
 
     // get clock
@@ -58,7 +58,10 @@ int main(void)
     int count = 0;
     while((currChar =getchar()) != '\n')
     {
-        if()
+        text[count] = currChar;
+        count++;
+        printf("[%d]", count);
+        fflush(stdout);
     }
     // reset terminal to canonical mode.
     tcsetattr(STDIN_FILENO, TCSANOW, &tty);
