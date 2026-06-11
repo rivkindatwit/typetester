@@ -2,6 +2,7 @@
 #include <time.h>
 #include <termios.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 struct timespec start,end;
 struct termios tty;
@@ -34,9 +35,12 @@ int compareStrings(int len, char* testArr, char* userArr)
     return ret;
 }
 
+
+
 int main(void)
 {
-    char text[100];
+
+    char text[100]; // not currently needed.
     char testExpression[] = {"here is the where this one is the one"};
     printf("please type the expression below to your best accuracy\n");
     printf("%s\n",testExpression);
@@ -49,7 +53,13 @@ int main(void)
     // get clock
     clock_gettime(CLOCK_MONOTONIC, &start);
     // input from user
-    scanf("%99[^\n]", text);
+    // scanf("%99[^\n]", text);    * Disabling Scanf in favor of a loop.
+    int currChar;
+    int count = 0;
+    while((currChar =getchar()) != '\n')
+    {
+        if()
+    }
     // reset terminal to canonical mode.
     tcsetattr(STDIN_FILENO, TCSANOW, &tty);
 
