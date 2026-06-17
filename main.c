@@ -3,7 +3,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <stdbool.h>
-#include <stdlib.h>
+
 #include <string.h>
 
 struct timespec start,end;
