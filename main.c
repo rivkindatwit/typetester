@@ -50,17 +50,24 @@ int main(void)
     }
 
     char words[200][64];
-    int count = 0;
+    int wcount = 0;
 
-    while(fgets(words[count],sizeof(words[count]),file) != NULL)
+    while(fgets(words[wcount],sizeof(words[wcount]),file) != NULL)
     {
-        words[count][strcspn(words[count], "\n")] = '\0';
-        count++;
+        words[wcount][strcspn(words[wcount], "\n")] = '\0';
+        wcount++;
 
     }
 
-    char text[100] = {0}; // not currently needed.
-    char testExpression[] = {"here is the where this one is the one"};
+    char text[256] = {0};
+    char testExpression[256] = {0}; // no more fixed expression
+    for(int i = 0; i < 20; i++)
+    {
+        strcat(testExpression,words[i]);
+
+    }
+    printf("test of 20 words: %s\n",testExpression);
+
     printf("please type the expression below to your best accuracy\n");
     printf("%s\n",testExpression);
 
