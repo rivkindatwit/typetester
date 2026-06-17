@@ -3,7 +3,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <stdbool.h>
-
+#include <stdlib.h>
 #include <string.h>
 
 struct timespec start,end;
@@ -49,6 +49,7 @@ int main(void)
 
     }
 
+    srand(time(NULL));
     char words[200][64];
     int wcount = 0;
 
@@ -61,13 +62,14 @@ int main(void)
 
     char text[256] = {0};
     char testExpression[256] = {0}; // no more fixed expression
+    int a = rand();
     for(int i = 0; i < 20; i++)
     {
         if(i != 0)
         {
             strcat(testExpression," ");
         }
-        strcat(testExpression,words[i]);
+        strcat(testExpression,words[(rand() % wcount) - 1]);
 
     }
     //printf("test of 20 words: %s\n",testExpression);
