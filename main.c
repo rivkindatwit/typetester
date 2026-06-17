@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct timespec start,end;
 struct termios tty;
@@ -45,8 +46,18 @@ int main(void)
     {
         perror("failed to open file");
         return 1;
+
     }
-    char buf[200];
+
+    char words[200][64];
+    int count = 0;
+
+    while(fgets(words[count],sizeof(words[count]),file) != NULL)
+    {
+        words[count][strcspn(words[count], "\n")] = '\0';
+        count++;
+
+    }
 
     char text[100] = {0}; // not currently needed.
     char testExpression[] = {"here is the where this one is the one"};
@@ -103,6 +114,6 @@ int main(void)
             printf("You made: %d mistakes\n",difference);
     }
     double wpm = (numChars(testExpression) / elapsed) * 60 / 5;
-    printf("Speed: %.2f\n", wpm);
+    printf("Speed: %.2f WPM\n", wpm);
 
 }
