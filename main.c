@@ -41,7 +41,7 @@ int compareStrings(int len, char* testArr, char* userArr)
 
 int main(void)
 {
-    FILE *file = fopen("words.txt","r");
+    FILE *file = fopen("words1.txt","r");
     if(file == NULL)
     {
         perror("failed to open file");
@@ -63,10 +63,14 @@ int main(void)
     char testExpression[256] = {0}; // no more fixed expression
     for(int i = 0; i < 20; i++)
     {
+        if(i != 0)
+        {
+            strcat(testExpression," ");
+        }
         strcat(testExpression,words[i]);
 
     }
-    printf("test of 20 words: %s\n",testExpression);
+    //printf("test of 20 words: %s\n",testExpression);
 
     printf("please type the expression below to your best accuracy\n");
     printf("%s\n",testExpression);
