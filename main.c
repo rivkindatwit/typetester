@@ -69,7 +69,7 @@ int main(void)
         {
             strcat(testExpression," ");
         }
-        strcat(testExpression,words[(rand() % wcount) - 1]);
+        strcat(testExpression,words[(rand() % wcount) ]);
 
     }
     //printf("test of 20 words: %s\n",testExpression);
