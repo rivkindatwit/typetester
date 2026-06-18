@@ -62,7 +62,6 @@ int main(void)
 
     char text[256] = {0};
     char testExpression[256] = {0}; // no more fixed expression
-    int a = rand();
     for(int i = 0; i < 20; i++)
     {
         if(i != 0)
