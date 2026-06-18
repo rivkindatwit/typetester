@@ -56,7 +56,11 @@ int main(void)
     while(fgets(words[wcount],sizeof(words[wcount]),file) != NULL)
     {
         words[wcount][strcspn(words[wcount], "\n")] = '\0';
-        wcount++;
+        if (words[wcount][0] != '\0') {
+            wcount++;
+        }
+
+
 
     }
 

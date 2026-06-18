@@ -157,4 +157,3 @@ smile
 neighborly
 eatable
 admit
-\0
