@@ -66,13 +66,25 @@ int main(void)
 
     char text[256] = {0};
     char testExpression[256] = {0}; // no more fixed expression
-    for(int i = 0; i < 20; i++)
+    for(int i = 0; i < 5; i++)
     {
         if(i != 0)
         {
             strcat(testExpression," ");
         }
-        strcat(testExpression,words[(rand() % wcount) ]);
+        // TODO : implement no duplicate code.
+         strcat(testExpression,words[(rand() % wcount) ]);
+        if( words[i] == words[i-1])
+        {
+                if(i >= 1)
+                {
+                    strcat(testExpression,words[(rand() % wcount) ]);
+                    printf("duplicate detected");
+                }
+
+
+        }
+
 
     }
     //printf("test of 20 words: %s\n",testExpression);
@@ -109,6 +121,8 @@ int main(void)
 
 
         fflush(stdout);
+
+        //todo : implement backspace feature.
     }
     printf("\n");
     // reset terminal to canonical mode.
