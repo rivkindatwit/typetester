@@ -142,6 +142,7 @@ int main(void)
             break;
         default:
             printf("You made: %d mistakes\n",difference);
+            printf("test");
     }
     double wpm = (numChars(testExpression) / elapsed) * 60 / 5;
     printf("Speed: %.2f WPM\n", wpm);
