@@ -103,6 +103,7 @@ int main(void)
     // scanf("%99[^\n]", text);    * Disabling Scanf in favor of a loop.
     int currChar;
     int count = 0;
+    int l = 0;
     while((currChar =getchar()) != '\n')
     {
             text[count] = currChar;
