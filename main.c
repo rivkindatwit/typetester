@@ -59,9 +59,6 @@ int main(void)
         if (words[wcount][0] != '\0') {
             wcount++;
         }
-
-
-
     }
 
     char text[256] = {0};
@@ -90,6 +87,7 @@ int main(void)
     //printf("test of 20 words: %s\n",testExpression);
 
     printf("please type the expression below to your best accuracy\n");
+    printf("------------------------------------------------------\n");
     printf("%s\n",testExpression);
 
     tcgetattr(STDIN_FILENO, &tty);
